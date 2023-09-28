@@ -60,6 +60,7 @@ body {
 
 main {
     width: 100%;
+    padding: 0 4.8rem;
 }
 
 img {
@@ -79,9 +80,8 @@ img {
 }
 
 .container {
-    max-width: 57.5rem;
+    max-width: 50rem;
     margin: 0 auto;
-    padding: 0 4.8rem;
 }
 
 /* NEW GAME MENU SECTION ---------------------------------------------- */
@@ -177,6 +177,116 @@ img {
     border-radius: var(--medium-border-radius);
 }
 
+/* MAIN GAME WINDOW SECTION ------------------------------------------- */
+
+.main-game {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+.game-header-container {
+    display: grid;
+    grid-template-columns: repeat(3, 14rem);
+    justify-items: center;
+    align-items: center;
+    column-gap: 1.6rem;
+}
+
+.current-player-turn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--gray);
+    padding: 1.2rem;
+    background-color: var(--gunmetal);
+    border-radius: var(--base-border-radius);
+    border-bottom: 0.35rem solid var(--darker-gunmetal);
+}
+
+.restart-game-btn {
+    padding: 0.8rem;
+    background-color: var(--gray);
+    border-radius: var(--base-border-radius);
+    border-bottom: 0.35rem solid var(--darker-gray);
+}
+
+.current-player-img,
+.restart-icon {
+    width: 2.4rem;
+}
+
+.ui-game-board-container {
+    display: grid;
+    grid-template-columns: repeat(3, 14rem);
+    grid-template-rows: repeat(3, 14rem);
+    gap: 1.6rem;
+}
+
+.board-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--gunmetal);
+    border-radius: var(--base-border-radius);
+    box-shadow: inset 0 -0.65rem 0 0 var(--darker-gunmetal);
+}
+
+.current-player-mark {
+    width: 8.6rem;
+    opacity: 0;
+}
+
+.board-cell:hover {
+    .current-player-mark {
+        opacity: 1;
+    }
+}
+
+.game-results-history {
+    display: grid;
+    grid-template-columns: repeat(3, 14rem);
+    justify-items: center;
+    column-gap: 1.6rem;
+}
+
+.game-results-history > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 1.6rem;
+    border-radius: var(--base-border-radius);
+    /* -webkit-user-select: none;
+    user-select: none; */
+}
+
+.game-results-left {
+    background-color: var(--cyan);
+}
+
+.game-results-middle {
+    background-color: var(--gray);
+}
+
+.game-results-right {
+    background-color: var(--yellow);
+}
+
+.result-title {
+    font-size: 1.4rem;
+}
+
+.result-score {
+    font-weight: 800;
+    font-size: 2.4rem;
+}
+
 /*
 --SPACING SYSTEM (px)
 2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
@@ -184,3 +294,7 @@ img {
 --FONT SIZE SYSTEM (px)
 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
 */
+
+.hidden {
+    display: none;
+}

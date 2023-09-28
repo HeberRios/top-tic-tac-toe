@@ -9,7 +9,7 @@
     </head>
     <body>
         <main>
-            <section class="new-game-menu container">
+            <section class="new-game-menu container hidden">
                 <img
                     src="assets/images/svg/logo.svg"
                     alt="logo image"
@@ -51,6 +51,113 @@
                     >
                         <span>new game (vs player)</span>
                     </button>
+                </div>
+            </section>
+
+            <section class="main-game container">
+                <div class="game-header-container">
+                    <img
+                        src="assets/images/svg/logo.svg"
+                        alt="logo image"
+                        class="logo-img"
+                    />
+                    <div id="current-player-turn" class="current-player-turn">
+                        <img
+                            src="assets/images/svg/icon-x-default-not-selected.svg"
+                            alt="current player mark icon"
+                            id="current-player-img"
+                            class="current-player-img"
+                        />
+                        <span>turn</span>
+                    </div>
+                    <button id="restart-game-btn" class="btn restart-game-btn">
+                        <img
+                            src="assets/images/svg/icon-restart.svg"
+                            alt="restart game icon"
+                            class="restart-icon"
+                        />
+                    </button>
+                </div>
+
+                <div class="ui-game-board-container">
+                    <button class="btn board-cell">
+                        <img
+                            src="assets/images/svg/icon-x-outline.svg"
+                            alt="current player mark icon"
+                            class="current-player-mark"
+                        />
+                    </button>
+                    <button class="btn board-cell">
+                        <img
+                            src="assets/images/svg/icon-x-outline.svg"
+                            alt="current player mark icon"
+                            class="current-player-mark"
+                        />
+                    </button>
+                    <button class="btn board-cell">
+                        <img
+                            src="assets/images/svg/icon-x-outline.svg"
+                            alt="current player mark icon"
+                            class="current-player-mark"
+                        />
+                    </button>
+                    <button class="btn board-cell">
+                        <img
+                            src="assets/images/svg/icon-x-outline.svg"
+                            alt="current player mark icon"
+                            class="current-player-mark"
+                        />
+                    </button>
+                    <button class="btn board-cell">
+                        <img
+                            src="assets/images/svg/icon-x-outline.svg"
+                            alt="current player mark icon"
+                            class="current-player-mark"
+                        />
+                    </button>
+                    <button class="btn board-cell">
+                        <img
+                            src="assets/images/svg/icon-x-outline.svg"
+                            alt="current player mark icon"
+                            class="current-player-mark"
+                        />
+                    </button>
+                    <button class="btn board-cell">
+                        <img
+                            src="assets/images/svg/icon-x-outline.svg"
+                            alt="current player mark icon"
+                            class="current-player-mark"
+                        />
+                    </button>
+                    <button class="btn board-cell">
+                        <img
+                            src="assets/images/svg/icon-x-outline.svg"
+                            alt="current player mark icon"
+                            class="current-player-mark"
+                        />
+                    </button>
+                    <button class="btn board-cell">
+                        <img
+                            src="assets/images/svg/icon-x-outline.svg"
+                            alt="current player mark icon"
+                            class="current-player-mark"
+                        />
+                    </button>
+                </div>
+
+                <div class="game-results-history">
+                    <div class="game-results-left">
+                        <p class="result-title">x (p1)</p>
+                        <p class="result-score">7</p>
+                    </div>
+                    <div class="game-results-middle">
+                        <p class="result-title">ties</p>
+                        <p class="result-score">7</p>
+                    </div>
+                    <div class="game-results-right">
+                        <p class="result-title">o (p2)</p>
+                        <p class="result-score">7</p>
+                    </div>
                 </div>
             </section>
         </main>
