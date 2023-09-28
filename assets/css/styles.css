@@ -5,6 +5,24 @@
     box-sizing: border-box;
 }
 
+:root {
+    /* COLORS */
+    --bg-color: #1e2932;
+    --darker-gb-color: #090c0f;
+    --yellow: #e5b447;
+    --darker-yellow: #735a24;
+    --cyan: #6bbfbc;
+    --darker-cyan: #36605e;
+    --gray: #aebec8;
+    --darker-gray: #728694;
+    --gunmetal: #263540;
+    --darker-gunmetal: #15202a;
+
+    /* BORDER RADIUS */
+    --base-border-radius: 1rem;
+    --medium-border-radius: 1.5rem;
+}
+
 /* FONT FACES ------------------------------------------------------------ */
 /* outfit-500 - latin */
 @font-face {
@@ -27,6 +45,136 @@
 /* GENERAL STYLING -------------------------------------------------------- */
 html {
     font-size: 62.5%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Outfit", sans-serif;
+    text-transform: uppercase;
+    color: var(--darker-gb-color);
+    background-color: var(--bg-color);
+}
+
+main {
+    width: 100%;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+
+.btn {
+    background: none;
+    font: inherit;
+    color: inherit;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    text-transform: inherit;
+}
+
+.container {
+    max-width: 57.5rem;
+    margin: 0 auto;
+    padding: 0 4.8rem;
+}
+
+/* NEW GAME MENU SECTION ---------------------------------------------- */
+.new-game-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3.2rem;
+}
+
+.logo-img {
+    width: 7.4rem;
+}
+
+.player-selection-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+    padding: 2.4rem;
+    background-color: var(--gunmetal);
+    border-radius: var(--base-border-radius);
+}
+
+.player-selection-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 0.15rem;
+    color: var(--gray);
+}
+
+.mark-selection-container {
+    width: 100%;
+    display: flex;
+    padding: 1.2rem;
+    background-color: var(--darker-gunmetal);
+    border-radius: var(--base-border-radius);
+}
+
+.mark-selection-container button {
+    width: 50%;
+}
+
+.mark-selection-btn {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: var(--base-border-radius);
+}
+
+.mark-selection-btn.selected-mark {
+    background-color: var(--gray);
+}
+
+.x-selection-img,
+.o-selection-img {
+    width: 2.4rem;
+}
+
+.remember-text {
+    font-size: 1.2rem;
+    color: var(--darker-gray);
+}
+
+.new-game-buttons-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.ngvs-cpu-btn {
+    background-color: var(--yellow);
+    border-bottom: 0.65rem solid var(--darker-yellow);
+}
+
+.ngvs-player-btn {
+    background-color: var(--cyan);
+    border-bottom: 0.65rem solid var(--darker-cyan);
+}
+
+.ngvs-cpu-btn > span,
+.ngvs-player-btn > span {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 0.15rem;
+}
+
+.ngvs-cpu-btn,
+.ngvs-player-btn {
+    padding: 1.6rem;
+    border-radius: var(--medium-border-radius);
 }
 
 /*
