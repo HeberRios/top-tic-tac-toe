@@ -293,7 +293,9 @@ img {
 /* ROUND RESULT WINDOWS ------------------------------------------------ */
 /* GENERAL */
 .p1-round-result-window,
-.p2-round-result-window {
+.p2-round-result-window,
+.cpu-win-round-result-window,
+.cpu-loss-round-result-window {
     width: 100%;
     position: absolute;
     top: 50%;
@@ -372,7 +374,7 @@ img {
     width: 100vw;
     height: 100vh;
     background-color: var(--transparent-darker-bg-color);
-    backdrop-filter: blur(0.2rem);
+    backdrop-filter: blur(0.1rem);
     z-index: 5;
 }
 
