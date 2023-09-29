@@ -163,7 +163,7 @@
         </main>
 
         <div class="overlay"></div>
-        <div class="p1-round-result-window">
+        <div class="p1-round-result-window hidden">
             <p class="winner-player-text">player 1 wins!</p>
             <div class="winner-mark-container">
                 <img
@@ -171,7 +171,27 @@
                     alt="winner mark icon"
                     class="winner-mark-img"
                 />
-                <p class="winner-mark-text">takes the round</p>
+                <p class="winner-mark-text cyan-font-color">takes the round</p>
+            </div>
+            <div class="action-buttons-container">
+                <button class="btn quit-btn"><span>quit</span></button>
+                <button class="btn next-round-btn">
+                    <span>next round</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="p2-round-result-window">
+            <p class="winner-player-text">player 2 wins!</p>
+            <div class="winner-mark-container">
+                <img
+                    src="assets/images/svg/icon-o.svg"
+                    alt="winner mark icon"
+                    class="winner-mark-img"
+                />
+                <p class="winner-mark-text yellow-font-color">
+                    takes the round
+                </p>
             </div>
             <div class="action-buttons-container">
                 <button class="btn quit-btn"><span>quit</span></button>

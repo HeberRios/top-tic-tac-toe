@@ -291,8 +291,9 @@ img {
 }
 
 /* ROUND RESULT WINDOWS ------------------------------------------------ */
-/* PLAYER 1 */
-.p1-round-result-window {
+/* GENERAL */
+.p1-round-result-window,
+.p2-round-result-window {
     width: 100%;
     position: absolute;
     top: 50%;
@@ -328,7 +329,7 @@ img {
     font-size: 3.6rem;
     font-weight: 800;
     letter-spacing: 0.125rem;
-    color: var(--cyan);
+    color: var(--gray);
 }
 
 .action-buttons-container {
@@ -354,6 +355,16 @@ img {
     font-size: 1.6rem;
     font-weight: 800;
     letter-spacing: 0.125rem;
+}
+
+/* X MARK font color */
+.cyan-font-color {
+    color: var(--cyan);
+}
+
+/* O MARK font color */
+.yellow-font-color {
+    color: var(--yellow);
 }
 
 .overlay {
