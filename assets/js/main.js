@@ -202,9 +202,9 @@ const oMarkSelectImg = oMarkSelectBtn.firstElementChild;
 const markSelectBtns = [xMarkSelectBtn, oMarkSelectBtn];
 
 // FUNCTIONS ----------------------------------------------------------
-function changeSelectedMark(e) {
-    if (e.target.id === "x-selection-btn") {
-        if (e.target.classList.contains("selected-mark")) {
+function changeSelectedMark(btn) {
+    if (btn === markSelectBtns[0]) {
+        if (btn.classList.contains("selected-mark")) {
             return;
         } else {
             xMarkSelectBtn.classList.add("selected-mark");
@@ -214,7 +214,7 @@ function changeSelectedMark(e) {
             oMarkSelectBtn.classList.remove("selected-mark");
         }
     } else {
-        if (e.target.classList.contains("selected-mark")) {
+        if (btn.classList.contains("selected-mark")) {
             return;
         } else {
             oMarkSelectBtn.classList.add("selected-mark");
@@ -228,7 +228,7 @@ function changeSelectedMark(e) {
 
 // ADDING EVENT LISTENERS ---------------------------------------------
 markSelectBtns.forEach(function (btn) {
-    btn.addEventListener("click", function (e) {
-        changeSelectedMark(e);
+    btn.addEventListener("click", function () {
+        changeSelectedMark(btn);
     });
 });
