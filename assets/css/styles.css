@@ -295,7 +295,9 @@ img {
 .p1-round-result-window,
 .p2-round-result-window,
 .cpu-win-round-result-window,
-.cpu-loss-round-result-window {
+.cpu-loss-round-result-window,
+.tied-round-window,
+.restart-round-window {
     width: 100%;
     position: absolute;
     top: 50%;
@@ -368,6 +370,20 @@ img {
 .yellow-font-color {
     color: var(--yellow);
 }
+
+/* FOR TIED AND RESTART WINDOWS --- */
+.tied-round-window,
+.restart-round-window {
+    padding: 6.4rem 0;
+}
+
+.window-main-text {
+    font-size: 3.6rem;
+    font-weight: 800;
+    letter-spacing: 0.125rem;
+    color: var(--gray);
+}
+/* --- */
 
 .overlay {
     position: absolute;
