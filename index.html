@@ -54,7 +54,7 @@
                 </div>
             </section>
 
-            <section class="main-game container">
+            <section class="main-game container hidden">
                 <div class="game-header-container">
                     <img
                         src="assets/images/svg/logo.svg"
@@ -161,5 +161,24 @@
                 </div>
             </section>
         </main>
+
+        <div class="overlay"></div>
+        <div class="p1-round-result-window">
+            <p class="winner-player-text">player 1 wins!</p>
+            <div class="winner-mark-container">
+                <img
+                    src="assets/images/svg/icon-x.svg"
+                    alt="winner mark icon"
+                    class="winner-mark-img"
+                />
+                <p class="winner-mark-text">takes the round</p>
+            </div>
+            <div class="action-buttons-container">
+                <button class="btn quit-btn"><span>quit</span></button>
+                <button class="btn next-round-btn">
+                    <span>next round</span>
+                </button>
+            </div>
+        </div>
     </body>
 </html>

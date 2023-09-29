@@ -8,7 +8,8 @@
 :root {
     /* COLORS */
     --bg-color: #1e2932;
-    --darker-gb-color: #090c0f;
+    --darker-bg-color: #090c0f;
+    --transparent-darker-bg-color: #090c0f29;
     --yellow: #e5b447;
     --darker-yellow: #735a24;
     --cyan: #6bbfbc;
@@ -17,6 +18,7 @@
     --darker-gray: #728694;
     --gunmetal: #263540;
     --darker-gunmetal: #15202a;
+    --round-result-bg: #263540;
 
     /* BORDER RADIUS */
     --base-border-radius: 1rem;
@@ -48,13 +50,14 @@ html {
 }
 
 body {
+    position: relative;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: "Outfit", sans-serif;
     text-transform: uppercase;
-    color: var(--darker-gb-color);
+    color: var(--darker-bg-color);
     background-color: var(--bg-color);
 }
 
@@ -285,6 +288,81 @@ img {
 .result-score {
     font-weight: 800;
     font-size: 2.4rem;
+}
+
+/* ROUND RESULT WINDOWS ------------------------------------------------ */
+/* PLAYER 1 */
+.p1-round-result-window {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.4rem;
+    padding: 4.8rem 0;
+    background-color: var(--round-result-bg);
+    z-index: 10;
+}
+
+.winner-player-text {
+    color: var(--gray);
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 0.125rem;
+}
+
+.winner-mark-container {
+    display: flex;
+    align-items: center;
+    gap: 2.4rem;
+}
+
+.winner-mark-img {
+    width: 6.2rem;
+}
+
+.winner-mark-text {
+    font-size: 3.6rem;
+    font-weight: 800;
+    letter-spacing: 0.125rem;
+    color: var(--cyan);
+}
+
+.action-buttons-container {
+    display: flex;
+    gap: 1.6rem;
+}
+
+.quit-btn {
+    background-color: var(--gray);
+    border-bottom: 0.35rem solid var(--darker-gray);
+    border-radius: var(--base-border-radius);
+}
+
+.next-round-btn {
+    background-color: var(--yellow);
+    border-bottom: 0.35rem solid var(--darker-yellow);
+    border-radius: var(--base-border-radius);
+}
+
+.quit-btn,
+.next-round-btn {
+    padding: 1.6rem;
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 0.125rem;
+}
+
+.overlay {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--transparent-darker-bg-color);
+    backdrop-filter: blur(0.2rem);
+    z-index: 5;
 }
 
 /*
