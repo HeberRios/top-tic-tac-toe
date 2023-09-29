@@ -1,4 +1,4 @@
-/* CSS RESET ------------------------------------------------------------- */
+/* CSS RESET ------------------------------------------------------- */
 * {
     margin: 0;
     padding: 0;
@@ -25,7 +25,7 @@
     --medium-border-radius: 1.5rem;
 }
 
-/* FONT FACES ------------------------------------------------------------ */
+/* FONT FACES ------------------------------------------------------ */
 /* outfit-500 - latin */
 @font-face {
     font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
@@ -44,7 +44,7 @@
     src: url("../fonts/outfit-v11-latin-800.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
-/* GENERAL STYLING -------------------------------------------------------- */
+/* GENERAL STYLING ------------------------------------------------- */
 html {
     font-size: 62.5%;
 }
@@ -87,7 +87,7 @@ img {
     margin: 0 auto;
 }
 
-/* NEW GAME MENU SECTION ---------------------------------------------- */
+/* NEW GAME MENU SECTION ------------------------------------------- */
 .new-game-menu {
     display: flex;
     flex-direction: column;
@@ -120,6 +120,7 @@ img {
 .mark-selection-container {
     width: 100%;
     display: flex;
+    gap: .8rem;
     padding: 1.2rem;
     background-color: var(--darker-gunmetal);
     border-radius: var(--base-border-radius);
@@ -180,7 +181,7 @@ img {
     border-radius: var(--medium-border-radius);
 }
 
-/* MAIN GAME WINDOW SECTION ------------------------------------------- */
+/* MAIN GAME WINDOW SECTION ---------------------------------------- */
 
 .main-game {
     display: flex;
@@ -290,7 +291,7 @@ img {
     font-size: 2.4rem;
 }
 
-/* ROUND RESULT WINDOWS ------------------------------------------------ */
+/* ROUND RESULT WINDOWS -------------------------------------------- */
 /* GENERAL */
 .p1-round-result-window,
 .p2-round-result-window,

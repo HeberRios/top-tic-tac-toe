@@ -1,6 +1,6 @@
 "use strict";
 
-// MODULES ---------------------------------------------------------------
+// MODULES ------------------------------------------------------------
 const gameBoard = (function () {
     const gameBoardMatrix = [
         ["", "", ""],
@@ -182,7 +182,7 @@ const gameController = (function () {
     return { gameLoop, endGame };
 })();
 
-// FACTORY FUNCTIONS -----------------------------------------------------
+// FACTORY FUNCTIONS --------------------------------------------------
 
 const playerFactory = function (id) {
     return { id };
@@ -191,5 +191,44 @@ const playerFactory = function (id) {
 const xPlayer = playerFactory("x");
 const yPlayer = playerFactory("y");
 
-// Initializing Game -----------------------------------------------------
+// Initializing Game --------------------------------------------------
 // gameController.gameLoop(xPlayer.id, yPlayer.id);
+
+// SELECTING ELEMENTS -------------------------------------------------
+const xMarkSelectBtn = document.getElementById("x-selection-btn");
+const xMarkSelectImg = xMarkSelectBtn.firstElementChild;
+const oMarkSelectBtn = document.getElementById("o-selection-btn");
+const oMarkSelectImg = oMarkSelectBtn.firstElementChild;
+const markSelectBtns = [xMarkSelectBtn, oMarkSelectBtn];
+
+// FUNCTIONS ----------------------------------------------------------
+function changeSelectedMark(e) {
+    if (e.target.id === "x-selection-btn") {
+        if (e.target.classList.contains("selected-mark")) {
+            return;
+        } else {
+            xMarkSelectBtn.classList.add("selected-mark");
+            xMarkSelectImg.src = "assets/images/svg/icon-x-default.svg";
+            oMarkSelectImg.src =
+                "assets/images/svg/icon-o-default-not-selected.svg";
+            oMarkSelectBtn.classList.remove("selected-mark");
+        }
+    } else {
+        if (e.target.classList.contains("selected-mark")) {
+            return;
+        } else {
+            oMarkSelectBtn.classList.add("selected-mark");
+            oMarkSelectImg.src = "assets/images/svg/icon-o-default.svg";
+            xMarkSelectImg.src =
+                "assets/images/svg/icon-x-default-not-selected.svg";
+            xMarkSelectBtn.classList.remove("selected-mark");
+        }
+    }
+}
+
+// ADDING EVENT LISTENERS ---------------------------------------------
+markSelectBtns.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+        changeSelectedMark(e);
+    });
+});
