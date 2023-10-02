@@ -120,7 +120,7 @@ img {
 .mark-selection-container {
     width: 100%;
     display: flex;
-    gap: .8rem;
+    gap: 0.8rem;
     padding: 1.2rem;
     background-color: var(--darker-gunmetal);
     border-radius: var(--base-border-radius);
@@ -245,7 +245,12 @@ img {
     opacity: 0;
 }
 
-.board-cell:hover {
+.board-cell.pressed > .current-player-mark {
+    opacity: 1;
+}
+
+.board-cell:hover,
+.board-cell:focus {
     .current-player-mark {
         opacity: 1;
     }

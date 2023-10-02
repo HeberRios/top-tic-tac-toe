@@ -195,11 +195,16 @@ const yPlayer = playerFactory("y");
 // gameController.gameLoop(xPlayer.id, yPlayer.id);
 
 // SELECTING ELEMENTS -------------------------------------------------
+// NEW GAME WINDOW
 const xMarkSelectBtn = document.getElementById("x-selection-btn");
 const xMarkSelectImg = xMarkSelectBtn.firstElementChild;
 const oMarkSelectBtn = document.getElementById("o-selection-btn");
 const oMarkSelectImg = oMarkSelectBtn.firstElementChild;
 const markSelectBtns = [xMarkSelectBtn, oMarkSelectBtn];
+
+// MAIN GAME WINDOW
+const gameBoardBtns = document.querySelectorAll(".board-cell");
+const playerMarkImgs = document.querySelectorAll(".current-player-mark");
 
 // FUNCTIONS ----------------------------------------------------------
 function changeSelectedMark(btn) {
@@ -232,3 +237,43 @@ markSelectBtns.forEach(function (btn) {
         changeSelectedMark(btn);
     });
 });
+
+let currentPlayer_ = "x";
+
+gameBoardBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+        if (currentPlayer_ === "x") {
+            btn.classList.add("pressed");
+            btn.firstElementChild.src = "assets/images/svg/icon-x.svg";
+            currentPlayer_ = "o";
+            changeHoverMarkImg();
+        } else {
+            btn.classList.add("pressed");
+            btn.firstElementChild.src = "assets/images/svg/icon-o.svg";
+            currentPlayer_ = "x";
+            changeHoverMarkImg();
+        }
+    });
+});
+
+function changeHoverMarkImg() {
+    if (currentPlayer_ === "x") {
+        playerMarkImgs.forEach(function (img) {
+            if (!img.parentElement.classList.contains("pressed")) {
+                img.src = "assets/images/svg/icon-x-outline.svg";
+            } else {
+                //Not changing the img source
+            }
+        });
+    } else {
+        playerMarkImgs.forEach(function (img) {
+            if (!img.parentElement.classList.contains("pressed")) {
+                img.src = "assets/images/svg/icon-o-outline.svg";
+            } else {
+                //Not changing the img source
+            }
+        });
+    }
+}
+
+changeHoverMarkImg();
