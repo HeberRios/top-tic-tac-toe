@@ -203,6 +203,7 @@ const oMarkSelectImg = oMarkSelectBtn.firstElementChild;
 const markSelectBtns = [xMarkSelectBtn, oMarkSelectBtn];
 
 // MAIN GAME WINDOW
+const currentPlayerTurn = document.getElementById("current-player-img");
 const gameBoardBtns = document.querySelectorAll(".board-cell");
 const playerMarkImgs = document.querySelectorAll(".current-player-mark");
 
@@ -231,6 +232,16 @@ function changeSelectedMark(btn) {
     }
 }
 
+function changeCurrentPlayerTurnImage() {
+    if (currentPlayer_ === "x") {
+        currentPlayerTurn.src =
+            "assets/images/svg/icon-x-default-not-selected.svg";
+    } else {
+        currentPlayerTurn.src =
+            "assets/images/svg/icon-o-default-not-selected.svg";
+    }
+}
+
 // ADDING EVENT LISTENERS ---------------------------------------------
 markSelectBtns.forEach(function (btn) {
     btn.addEventListener("click", function () {
@@ -247,11 +258,13 @@ gameBoardBtns.forEach(function (btn) {
             btn.firstElementChild.src = "assets/images/svg/icon-x.svg";
             currentPlayer_ = "o";
             changeHoverMarkImg();
+            changeCurrentPlayerTurnImage();
         } else {
             btn.classList.add("pressed");
             btn.firstElementChild.src = "assets/images/svg/icon-o.svg";
             currentPlayer_ = "x";
             changeHoverMarkImg();
+            changeCurrentPlayerTurnImage();
         }
     });
 });

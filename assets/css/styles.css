@@ -240,6 +240,14 @@ img {
     box-shadow: inset 0 -0.65rem 0 0 var(--darker-gunmetal);
 }
 
+.board-cell.x-winner {
+    background-color: var(--cyan);
+}
+
+.board-cell.o-winner {
+    background-color: var(--yellow);
+}
+
 .current-player-mark {
     width: 8.6rem;
     opacity: 0;
