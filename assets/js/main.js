@@ -211,6 +211,14 @@ const mainGameWindow = document.querySelector(".main-game");
 const currentPlayerTurn = document.getElementById("current-player-img");
 const gameBoardBtns = document.querySelectorAll(".board-cell");
 const playerMarkImgs = document.querySelectorAll(".current-player-mark");
+const gameResultsLeft = document.querySelector(".game-results-left");
+const xMarkResultTitle = gameResultsLeft.firstElementChild;
+const xMarkScore = gameResultsLeft.lastElementChild;
+const gameResultsMiddle = document.querySelector(".game-results-middle");
+const tiesScore = gameResultsMiddle.lastElementChild;
+const gameResultsRight = document.querySelector(".game-results-right");
+const oMarkResultTitle = gameResultsRight.firstElementChild;
+const oMarkScore = gameResultsRight.lastElementChild;
 
 // FUNCTIONS ----------------------------------------------------------
 function changeSelectedMark(btn) {
@@ -237,9 +245,23 @@ function changeSelectedMark(btn) {
     }
 }
 
+function setInitialResultsText() {
+    xMarkScore.textContent = "0";
+    tiesScore.textContent = "0";
+    oMarkScore.textContent = "0";
+
+    if (oMarkSelectBtn.classList.contains("selected-mark")) {
+        xMarkResultTitle.textContent = "x (p2)";
+        oMarkResultTitle.textContent = "o (p1)";
+    } else {
+        return;
+    }
+}
+
 function changeToGameBoardWindow() {
     newGameMenu.classList.add("hidden");
     mainGameWindow.classList.remove("hidden");
+    setInitialResultsText();
 }
 
 function changeCurrentPlayerTurnImage() {
