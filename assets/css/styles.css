@@ -253,6 +253,10 @@ img {
     opacity: 0;
 }
 
+.board-cell.pressed {
+    cursor: not-allowed;
+}
+
 .board-cell.pressed > .current-player-mark {
     opacity: 1;
 }

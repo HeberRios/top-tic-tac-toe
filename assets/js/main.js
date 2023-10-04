@@ -194,15 +194,20 @@ const yPlayer = playerFactory("y");
 // Initializing Game --------------------------------------------------
 // gameController.gameLoop(xPlayer.id, yPlayer.id);
 
+let currentPlayer_ = "x";
+
 // SELECTING ELEMENTS -------------------------------------------------
 // NEW GAME WINDOW
+const newGameMenu = document.querySelector(".new-game-menu");
 const xMarkSelectBtn = document.getElementById("x-selection-btn");
 const xMarkSelectImg = xMarkSelectBtn.firstElementChild;
 const oMarkSelectBtn = document.getElementById("o-selection-btn");
 const oMarkSelectImg = oMarkSelectBtn.firstElementChild;
 const markSelectBtns = [xMarkSelectBtn, oMarkSelectBtn];
+const newGameVsPlayerBtn = document.getElementById("new-game-vs-player-btn");
 
 // MAIN GAME WINDOW
+const mainGameWindow = document.querySelector(".main-game");
 const currentPlayerTurn = document.getElementById("current-player-img");
 const gameBoardBtns = document.querySelectorAll(".board-cell");
 const playerMarkImgs = document.querySelectorAll(".current-player-mark");
@@ -232,6 +237,11 @@ function changeSelectedMark(btn) {
     }
 }
 
+function changeToGameBoardWindow() {
+    newGameMenu.classList.add("hidden");
+    mainGameWindow.classList.remove("hidden");
+}
+
 function changeCurrentPlayerTurnImage() {
     if (currentPlayer_ === "x") {
         currentPlayerTurn.src =
@@ -241,33 +251,6 @@ function changeCurrentPlayerTurnImage() {
             "assets/images/svg/icon-o-default-not-selected.svg";
     }
 }
-
-// ADDING EVENT LISTENERS ---------------------------------------------
-markSelectBtns.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-        changeSelectedMark(btn);
-    });
-});
-
-let currentPlayer_ = "x";
-
-gameBoardBtns.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-        if (currentPlayer_ === "x") {
-            btn.classList.add("pressed");
-            btn.firstElementChild.src = "assets/images/svg/icon-x.svg";
-            currentPlayer_ = "o";
-            changeHoverMarkImg();
-            changeCurrentPlayerTurnImage();
-        } else {
-            btn.classList.add("pressed");
-            btn.firstElementChild.src = "assets/images/svg/icon-o.svg";
-            currentPlayer_ = "x";
-            changeHoverMarkImg();
-            changeCurrentPlayerTurnImage();
-        }
-    });
-});
 
 function changeHoverMarkImg() {
     if (currentPlayer_ === "x") {
@@ -289,4 +272,49 @@ function changeHoverMarkImg() {
     }
 }
 
-changeHoverMarkImg();
+function placeCurrentPlayerMark(btn) {
+    if (currentPlayer_ === "x") {
+        btn.classList.add("pressed");
+        btn.firstElementChild.src = "assets/images/svg/icon-x.svg";
+        currentPlayer_ = "o";
+        changeHoverMarkImg();
+        btn.disabled = "disabled";
+        changeCurrentPlayerTurnImage();
+    } else {
+        btn.classList.add("pressed");
+        btn.firstElementChild.src = "assets/images/svg/icon-o.svg";
+        currentPlayer_ = "x";
+        changeHoverMarkImg();
+        btn.disabled = "disabled";
+        changeCurrentPlayerTurnImage();
+    }
+}
+
+// ADDING EVENT LISTENERS ---------------------------------------------
+
+newGameVsPlayerBtn.addEventListener("click", function () {
+    changeToGameBoardWindow();
+});
+
+markSelectBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+        changeSelectedMark(btn);
+    });
+});
+
+gameBoardBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+        placeCurrentPlayerMark(btn);
+    });
+});
+
+// changeHoverMarkImg();
+
+// To enter to the main game widow we first need:
+
+// - obtain which mark is for player 1 and which for player 2
+// - assign the player that has the x mark as the initial player of the
+// game (current player)
+// - array that contains the x wins score, o wins score and ties score
+// - depending on the current player (mark) when a gameboard cell is
+// hovered or clicked, the respective mark will be showed and applied.
