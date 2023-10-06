@@ -14,112 +14,242 @@ const gameBoard = (function () {
             gameBoardMatrix[0][1] === "x" &&
             gameBoardMatrix[0][2] === "x"
         ) {
-            console.log("X player wins.");
+            gameBoardBtns[0].classList.add("x-winner");
+            gameBoardBtns[0].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
+            gameBoardBtns[1].classList.add("x-winner");
+            gameBoardBtns[1].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
+            gameBoardBtns[2].classList.add("x-winner");
+            gameBoardBtns[2].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
+
             gameController.endGame();
         } else if (
             gameBoardMatrix[1][0] === "x" &&
             gameBoardMatrix[1][1] === "x" &&
             gameBoardMatrix[1][2] === "x"
         ) {
-            console.log("X player wins.");
+            gameBoardBtns[3].classList.add("x-winner");
+            gameBoardBtns[3].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
+            gameBoardBtns[4].classList.add("x-winner");
+            gameBoardBtns[4].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
+            gameBoardBtns[5].classList.add("x-winner");
+            gameBoardBtns[5].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
+
             gameController.endGame();
         } else if (
             gameBoardMatrix[2][0] === "x" &&
             gameBoardMatrix[2][1] === "x" &&
             gameBoardMatrix[2][2] === "x"
         ) {
-            console.log("X player wins.");
+            gameBoardBtns[6].classList.add("x-winner");
+            gameBoardBtns[6].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
+            gameBoardBtns[7].classList.add("x-winner");
+            gameBoardBtns[7].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
+            gameBoardBtns[8].classList.add("x-winner");
+            gameBoardBtns[8].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
         } else if (
             gameBoardMatrix[0][0] === "x" &&
             gameBoardMatrix[1][0] === "x" &&
             gameBoardMatrix[2][0] === "x"
         ) {
-            console.log("X player wins.");
+            gameBoardBtns[0].classList.add("x-winner");
+            gameBoardBtns[0].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
+            gameBoardBtns[3].classList.add("x-winner");
+            gameBoardBtns[3].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
+            gameBoardBtns[6].classList.add("x-winner");
+            gameBoardBtns[6].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
         } else if (
             gameBoardMatrix[0][1] === "x" &&
             gameBoardMatrix[1][1] === "x" &&
             gameBoardMatrix[2][1] === "x"
         ) {
-            console.log("X player wins.");
+            gameBoardBtns[1].classList.add("x-winner");
+            gameBoardBtns[1].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
+            gameBoardBtns[4].classList.add("x-winner");
+            gameBoardBtns[4].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
+            gameBoardBtns[7].classList.add("x-winner");
+            gameBoardBtns[7].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
         } else if (
             gameBoardMatrix[0][2] === "x" &&
             gameBoardMatrix[1][2] === "x" &&
             gameBoardMatrix[2][2] === "x"
         ) {
-            console.log("X player wins.");
+            gameBoardBtns[2].classList.add("x-winner");
+            gameBoardBtns[2].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
+            gameBoardBtns[5].classList.add("x-winner");
+            gameBoardBtns[5].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
+            gameBoardBtns[8].classList.add("x-winner");
+            gameBoardBtns[8].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
         } else if (
             gameBoardMatrix[0][0] === "x" &&
             gameBoardMatrix[1][1] === "x" &&
             gameBoardMatrix[2][2] === "x"
         ) {
-            console.log("X player wins.");
+            gameBoardBtns[0].classList.add("x-winner");
+            gameBoardBtns[0].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
+            gameBoardBtns[4].classList.add("x-winner");
+            gameBoardBtns[4].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
+            gameBoardBtns[8].classList.add("x-winner");
+            gameBoardBtns[8].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
         } else if (
             gameBoardMatrix[0][2] === "x" &&
             gameBoardMatrix[1][1] === "x" &&
             gameBoardMatrix[2][0] === "x"
         ) {
-            console.log("X player wins.");
+            gameBoardBtns[2].classList.add("x-winner");
+            gameBoardBtns[2].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
+            gameBoardBtns[4].classList.add("x-winner");
+            gameBoardBtns[4].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
+            gameBoardBtns[6].classList.add("x-winner");
+            gameBoardBtns[6].firstElementChild.src =
+                "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
         } else if (
-            gameBoardMatrix[0][0] === "y" &&
-            gameBoardMatrix[0][1] === "y" &&
-            gameBoardMatrix[0][2] === "y"
+            gameBoardMatrix[0][0] === "o" &&
+            gameBoardMatrix[0][1] === "o" &&
+            gameBoardMatrix[0][2] === "o"
         ) {
-            console.log("Y player wins.");
+            gameBoardBtns[0].classList.add("o-winner");
+            gameBoardBtns[0].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
+            gameBoardBtns[1].classList.add("o-winner");
+            gameBoardBtns[1].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
+            gameBoardBtns[2].classList.add("o-winner");
+            gameBoardBtns[2].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
         } else if (
-            gameBoardMatrix[1][0] === "y" &&
-            gameBoardMatrix[1][1] === "y" &&
-            gameBoardMatrix[1][2] === "y"
+            gameBoardMatrix[1][0] === "o" &&
+            gameBoardMatrix[1][1] === "o" &&
+            gameBoardMatrix[1][2] === "o"
         ) {
-            console.log("Y player wins.");
+            gameBoardBtns[3].classList.add("o-winner");
+            gameBoardBtns[3].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
+            gameBoardBtns[4].classList.add("o-winner");
+            gameBoardBtns[4].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
+            gameBoardBtns[5].classList.add("o-winner");
+            gameBoardBtns[5].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
         } else if (
-            gameBoardMatrix[2][0] === "y" &&
-            gameBoardMatrix[2][1] === "y" &&
-            gameBoardMatrix[2][2] === "y"
+            gameBoardMatrix[2][0] === "o" &&
+            gameBoardMatrix[2][1] === "o" &&
+            gameBoardMatrix[2][2] === "o"
         ) {
-            console.log("Y player wins.");
+            gameBoardBtns[6].classList.add("o-winner");
+            gameBoardBtns[6].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
+            gameBoardBtns[7].classList.add("o-winner");
+            gameBoardBtns[7].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
+            gameBoardBtns[8].classList.add("o-winner");
+            gameBoardBtns[8].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
         } else if (
-            gameBoardMatrix[0][0] === "y" &&
-            gameBoardMatrix[1][0] === "y" &&
-            gameBoardMatrix[2][0] === "y"
+            gameBoardMatrix[0][0] === "o" &&
+            gameBoardMatrix[1][0] === "o" &&
+            gameBoardMatrix[2][0] === "o"
         ) {
-            console.log("Y player wins.");
+            gameBoardBtns[0].classList.add("o-winner");
+            gameBoardBtns[0].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
+            gameBoardBtns[3].classList.add("o-winner");
+            gameBoardBtns[3].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
+            gameBoardBtns[6].classList.add("o-winner");
+            gameBoardBtns[6].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
         } else if (
-            gameBoardMatrix[0][1] === "y" &&
-            gameBoardMatrix[1][1] === "y" &&
-            gameBoardMatrix[2][1] === "y"
+            gameBoardMatrix[0][1] === "o" &&
+            gameBoardMatrix[1][1] === "o" &&
+            gameBoardMatrix[2][1] === "o"
         ) {
-            console.log("Y player wins.");
+            gameBoardBtns[1].classList.add("o-winner");
+            gameBoardBtns[1].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
+            gameBoardBtns[4].classList.add("o-winner");
+            gameBoardBtns[4].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
+            gameBoardBtns[7].classList.add("o-winner");
+            gameBoardBtns[7].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
         } else if (
-            gameBoardMatrix[0][2] === "y" &&
-            gameBoardMatrix[1][2] === "y" &&
-            gameBoardMatrix[2][2] === "y"
+            gameBoardMatrix[0][2] === "o" &&
+            gameBoardMatrix[1][2] === "o" &&
+            gameBoardMatrix[2][2] === "o"
         ) {
-            console.log("Y player wins.");
+            gameBoardBtns[2].classList.add("o-winner");
+            gameBoardBtns[2].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
+            gameBoardBtns[5].classList.add("o-winner");
+            gameBoardBtns[5].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
+            gameBoardBtns[8].classList.add("o-winner");
+            gameBoardBtns[8].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
         } else if (
-            gameBoardMatrix[0][0] === "y" &&
-            gameBoardMatrix[1][1] === "y" &&
-            gameBoardMatrix[2][2] === "y"
+            gameBoardMatrix[0][0] === "o" &&
+            gameBoardMatrix[1][1] === "o" &&
+            gameBoardMatrix[2][2] === "o"
         ) {
-            console.log("Y player wins.");
+            gameBoardBtns[0].classList.add("o-winner");
+            gameBoardBtns[0].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
+            gameBoardBtns[4].classList.add("o-winner");
+            gameBoardBtns[4].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
+            gameBoardBtns[8].classList.add("o-winner");
+            gameBoardBtns[8].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
         } else if (
-            gameBoardMatrix[0][2] === "y" &&
-            gameBoardMatrix[1][1] === "y" &&
-            gameBoardMatrix[2][0] === "y"
+            gameBoardMatrix[0][2] === "o" &&
+            gameBoardMatrix[1][1] === "o" &&
+            gameBoardMatrix[2][0] === "o"
         ) {
-            console.log("Y player wins.");
+            gameBoardBtns[2].classList.add("o-winner");
+            gameBoardBtns[2].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
+            gameBoardBtns[4].classList.add("o-winner");
+            gameBoardBtns[4].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
+            gameBoardBtns[6].classList.add("o-winner");
+            gameBoardBtns[6].firstElementChild.src =
+                "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
         } else {
             console.log("Not yet a winner");
@@ -131,55 +261,67 @@ const gameBoard = (function () {
         console.log(gameBoardMatrix);
     };
 
-    return { fillMatrixCell, checkBoardState };
+    return { checkBoardState, fillMatrixCell };
 })();
 
 const gameController = (function () {
     let gameState = true;
-    let currentPlayer = true;
-    // Always start with player 1
-    const gameLoop = function (player1ID, player2ID) {
-        do {
-            const positionTofill = currentPlayer
-                ? prompt(
-                      `Player X, which position you want to fill? ("row,column". Rows and columns go from 0 to 2)`
-                  )
-                : prompt(
-                      `Player Y, which position you want to fill? ("row,column". Rows and columns go from 0 to 2)`
-                  );
+    let currentPlayer = "";
+    let player_1, player_2;
 
-            const getPositionNumbersRegExp = new RegExp(/\d/, "g");
-            const positionsArray = positionTofill.match(
-                getPositionNumbersRegExp
-            );
+    const setPlayer_1Mark = function (player_1Mark) {
+        player_1 = player_1Mark;
+    };
 
-            positionsArray[0] = +positionsArray[0];
-            positionsArray[1] = +positionsArray[1];
+    const setPlayer_2Mark = function (player_2Mark) {
+        player_2 = player_2Mark;
+    };
 
-            if (currentPlayer) {
-                gameBoard.fillMatrixCell(
-                    positionsArray[0],
-                    positionsArray[1],
-                    player1ID
-                );
-                currentPlayer = false;
-            } else {
-                gameBoard.fillMatrixCell(
-                    positionsArray[0],
-                    positionsArray[1],
-                    player2ID
-                );
-                currentPlayer = true;
-            }
+    const setInitialPlayer = function (xMarkPlayer) {
+        currentPlayer = xMarkPlayer;
+    };
 
-            gameBoard.checkBoardState();
-        } while (gameState);
+    const getCurrentPlayer = function () {
+        return currentPlayer;
+    };
+
+    const switchCurrentPlayer = function () {
+        if (getCurrentPlayer() === "x") {
+            currentPlayer = "o";
+        } else {
+            currentPlayer = "x";
+        }
+    };
+
+    const initializeGame = function (player_1Mark, player_2Mark, xplayerID) {
+        setPlayer_1Mark(player_1Mark);
+        setPlayer_2Mark(player_2Mark);
+        setInitialPlayer(xplayerID);
+    };
+
+    const pressedBoardButton = function (pressedBtn) {
+        if (getCurrentPlayer() === "x") {
+            const positionArray = pressedBtn.dataset.rowColumn.split(",");
+            const [row, column] = positionArray;
+            gameBoard.fillMatrixCell(+row, +column, "x");
+        } else {
+            const positionArray = pressedBtn.dataset.rowColumn.split(",");
+            const [row, column] = positionArray;
+            gameBoard.fillMatrixCell(+row, +column, "o");
+        }
     };
 
     const endGame = function () {
         gameState = false;
     };
-    return { gameLoop, endGame };
+
+    return {
+        initializeGame,
+        getCurrentPlayer,
+        switchCurrentPlayer,
+        pressedBoardButton,
+        endGame,
+    };
 })();
 
 // FACTORY FUNCTIONS --------------------------------------------------
@@ -189,12 +331,7 @@ const playerFactory = function (id) {
 };
 
 const xPlayer = playerFactory("x");
-const yPlayer = playerFactory("y");
-
-// Initializing Game --------------------------------------------------
-// gameController.gameLoop(xPlayer.id, yPlayer.id);
-
-let currentPlayer_ = "x";
+const oPlayer = playerFactory("o");
 
 // SELECTING ELEMENTS -------------------------------------------------
 // NEW GAME WINDOW
@@ -253,8 +390,9 @@ function setInitialResultsText() {
     if (oMarkSelectBtn.classList.contains("selected-mark")) {
         xMarkResultTitle.textContent = "x (p2)";
         oMarkResultTitle.textContent = "o (p1)";
+        gameController.initializeGame(oPlayer.id, xPlayer.id, xPlayer.id);
     } else {
-        return;
+        gameController.initializeGame(xPlayer.id, oPlayer.id, xPlayer.id);
     }
 }
 
@@ -265,7 +403,7 @@ function changeToGameBoardWindow() {
 }
 
 function changeCurrentPlayerTurnImage() {
-    if (currentPlayer_ === "x") {
+    if (gameController.getCurrentPlayer() === "x") {
         currentPlayerTurn.src =
             "assets/images/svg/icon-x-default-not-selected.svg";
     } else {
@@ -275,7 +413,7 @@ function changeCurrentPlayerTurnImage() {
 }
 
 function changeHoverMarkImg() {
-    if (currentPlayer_ === "x") {
+    if (gameController.getCurrentPlayer() === "x") {
         playerMarkImgs.forEach(function (img) {
             if (!img.parentElement.classList.contains("pressed")) {
                 img.src = "assets/images/svg/icon-x-outline.svg";
@@ -295,20 +433,24 @@ function changeHoverMarkImg() {
 }
 
 function placeCurrentPlayerMark(btn) {
-    if (currentPlayer_ === "x") {
+    if (gameController.getCurrentPlayer() === "x") {
+        gameController.pressedBoardButton(btn);
         btn.classList.add("pressed");
         btn.firstElementChild.src = "assets/images/svg/icon-x.svg";
-        currentPlayer_ = "o";
+        gameController.switchCurrentPlayer();
         changeHoverMarkImg();
         btn.disabled = "disabled";
         changeCurrentPlayerTurnImage();
+        gameBoard.checkBoardState();
     } else {
+        gameController.pressedBoardButton(btn);
         btn.classList.add("pressed");
         btn.firstElementChild.src = "assets/images/svg/icon-o.svg";
-        currentPlayer_ = "x";
+        gameController.switchCurrentPlayer();
         changeHoverMarkImg();
         btn.disabled = "disabled";
         changeCurrentPlayerTurnImage();
+        gameBoard.checkBoardState();
     }
 }
 
@@ -329,14 +471,3 @@ gameBoardBtns.forEach(function (btn) {
         placeCurrentPlayerMark(btn);
     });
 });
-
-// changeHoverMarkImg();
-
-// To enter to the main game widow we first need:
-
-// - obtain which mark is for player 1 and which for player 2
-// - assign the player that has the x mark as the initial player of the
-// game (current player)
-// - array that contains the x wins score, o wins score and ties score
-// - depending on the current player (mark) when a gameboard cell is
-// hovered or clicked, the respective mark will be showed and applied.
