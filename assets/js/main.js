@@ -25,6 +25,7 @@ const gameBoard = (function () {
                 "assets/images/svg/icon-x-default.svg";
 
             gameController.endGame();
+            disableBoardButtons();
         } else if (
             gameBoardMatrix[1][0] === "x" &&
             gameBoardMatrix[1][1] === "x" &&
@@ -41,6 +42,7 @@ const gameBoard = (function () {
                 "assets/images/svg/icon-x-default.svg";
 
             gameController.endGame();
+            disableBoardButtons();
         } else if (
             gameBoardMatrix[2][0] === "x" &&
             gameBoardMatrix[2][1] === "x" &&
@@ -56,6 +58,7 @@ const gameBoard = (function () {
             gameBoardBtns[8].firstElementChild.src =
                 "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
+            disableBoardButtons();
         } else if (
             gameBoardMatrix[0][0] === "x" &&
             gameBoardMatrix[1][0] === "x" &&
@@ -71,6 +74,7 @@ const gameBoard = (function () {
             gameBoardBtns[6].firstElementChild.src =
                 "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
+            disableBoardButtons();
         } else if (
             gameBoardMatrix[0][1] === "x" &&
             gameBoardMatrix[1][1] === "x" &&
@@ -86,6 +90,7 @@ const gameBoard = (function () {
             gameBoardBtns[7].firstElementChild.src =
                 "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
+            disableBoardButtons();
         } else if (
             gameBoardMatrix[0][2] === "x" &&
             gameBoardMatrix[1][2] === "x" &&
@@ -101,6 +106,7 @@ const gameBoard = (function () {
             gameBoardBtns[8].firstElementChild.src =
                 "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
+            disableBoardButtons();
         } else if (
             gameBoardMatrix[0][0] === "x" &&
             gameBoardMatrix[1][1] === "x" &&
@@ -116,6 +122,7 @@ const gameBoard = (function () {
             gameBoardBtns[8].firstElementChild.src =
                 "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
+            disableBoardButtons();
         } else if (
             gameBoardMatrix[0][2] === "x" &&
             gameBoardMatrix[1][1] === "x" &&
@@ -131,6 +138,7 @@ const gameBoard = (function () {
             gameBoardBtns[6].firstElementChild.src =
                 "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
+            disableBoardButtons();
         } else if (
             gameBoardMatrix[0][0] === "o" &&
             gameBoardMatrix[0][1] === "o" &&
@@ -146,6 +154,7 @@ const gameBoard = (function () {
             gameBoardBtns[2].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            disableBoardButtons();
         } else if (
             gameBoardMatrix[1][0] === "o" &&
             gameBoardMatrix[1][1] === "o" &&
@@ -161,6 +170,7 @@ const gameBoard = (function () {
             gameBoardBtns[5].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            disableBoardButtons();
         } else if (
             gameBoardMatrix[2][0] === "o" &&
             gameBoardMatrix[2][1] === "o" &&
@@ -176,6 +186,7 @@ const gameBoard = (function () {
             gameBoardBtns[8].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            disableBoardButtons();
         } else if (
             gameBoardMatrix[0][0] === "o" &&
             gameBoardMatrix[1][0] === "o" &&
@@ -191,6 +202,7 @@ const gameBoard = (function () {
             gameBoardBtns[6].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            disableBoardButtons();
         } else if (
             gameBoardMatrix[0][1] === "o" &&
             gameBoardMatrix[1][1] === "o" &&
@@ -206,6 +218,7 @@ const gameBoard = (function () {
             gameBoardBtns[7].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            disableBoardButtons();
         } else if (
             gameBoardMatrix[0][2] === "o" &&
             gameBoardMatrix[1][2] === "o" &&
@@ -221,6 +234,7 @@ const gameBoard = (function () {
             gameBoardBtns[8].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            disableBoardButtons();
         } else if (
             gameBoardMatrix[0][0] === "o" &&
             gameBoardMatrix[1][1] === "o" &&
@@ -236,6 +250,7 @@ const gameBoard = (function () {
             gameBoardBtns[8].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            disableBoardButtons();
         } else if (
             gameBoardMatrix[0][2] === "o" &&
             gameBoardMatrix[1][1] === "o" &&
@@ -251,7 +266,9 @@ const gameBoard = (function () {
             gameBoardBtns[6].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            disableBoardButtons();
         } else {
+            gameController.switchCurrentPlayer();
             console.log("Not yet a winner");
         }
     };
@@ -357,6 +374,9 @@ const gameResultsRight = document.querySelector(".game-results-right");
 const oMarkResultTitle = gameResultsRight.firstElementChild;
 const oMarkScore = gameResultsRight.lastElementChild;
 
+// ROUND WINNER WINDOW
+const player1WinWindow = document.querySelector(".p1-round-result-window");
+
 // FUNCTIONS ----------------------------------------------------------
 function changeSelectedMark(btn) {
     if (btn === markSelectBtns[0]) {
@@ -437,21 +457,25 @@ function placeCurrentPlayerMark(btn) {
         gameController.pressedBoardButton(btn);
         btn.classList.add("pressed");
         btn.firstElementChild.src = "assets/images/svg/icon-x.svg";
-        gameController.switchCurrentPlayer();
-        changeHoverMarkImg();
-        btn.disabled = "disabled";
-        changeCurrentPlayerTurnImage();
         gameBoard.checkBoardState();
+        changeHoverMarkImg();
+        btn.disabled = true;
+        changeCurrentPlayerTurnImage();
     } else {
         gameController.pressedBoardButton(btn);
         btn.classList.add("pressed");
         btn.firstElementChild.src = "assets/images/svg/icon-o.svg";
-        gameController.switchCurrentPlayer();
-        changeHoverMarkImg();
-        btn.disabled = "disabled";
-        changeCurrentPlayerTurnImage();
         gameBoard.checkBoardState();
+        changeHoverMarkImg();
+        btn.disabled = true;
+        changeCurrentPlayerTurnImage();
     }
+}
+
+function disableBoardButtons() {
+    gameBoardBtns.forEach(function (btn) {
+        btn.disabled = true;
+    });
 }
 
 // ADDING EVENT LISTENERS ---------------------------------------------

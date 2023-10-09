@@ -253,7 +253,8 @@ img {
     opacity: 0;
 }
 
-.board-cell.pressed {
+.board-cell.pressed,
+.board-cell:disabled {
     cursor: not-allowed;
 }
 
