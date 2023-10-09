@@ -25,6 +25,7 @@ const gameBoard = (function () {
                 "assets/images/svg/icon-x-default.svg";
 
             gameController.endGame();
+            setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
             gameBoardMatrix[1][0] === "x" &&
@@ -42,6 +43,7 @@ const gameBoard = (function () {
                 "assets/images/svg/icon-x-default.svg";
 
             gameController.endGame();
+            setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
             gameBoardMatrix[2][0] === "x" &&
@@ -58,6 +60,7 @@ const gameBoard = (function () {
             gameBoardBtns[8].firstElementChild.src =
                 "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
+            setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
             gameBoardMatrix[0][0] === "x" &&
@@ -74,6 +77,7 @@ const gameBoard = (function () {
             gameBoardBtns[6].firstElementChild.src =
                 "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
+            setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
             gameBoardMatrix[0][1] === "x" &&
@@ -90,6 +94,7 @@ const gameBoard = (function () {
             gameBoardBtns[7].firstElementChild.src =
                 "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
+            setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
             gameBoardMatrix[0][2] === "x" &&
@@ -106,6 +111,7 @@ const gameBoard = (function () {
             gameBoardBtns[8].firstElementChild.src =
                 "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
+            setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
             gameBoardMatrix[0][0] === "x" &&
@@ -122,6 +128,7 @@ const gameBoard = (function () {
             gameBoardBtns[8].firstElementChild.src =
                 "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
+            setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
             gameBoardMatrix[0][2] === "x" &&
@@ -138,6 +145,7 @@ const gameBoard = (function () {
             gameBoardBtns[6].firstElementChild.src =
                 "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
+            setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
             gameBoardMatrix[0][0] === "o" &&
@@ -154,6 +162,7 @@ const gameBoard = (function () {
             gameBoardBtns[2].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
             gameBoardMatrix[1][0] === "o" &&
@@ -170,6 +179,7 @@ const gameBoard = (function () {
             gameBoardBtns[5].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
             gameBoardMatrix[2][0] === "o" &&
@@ -186,6 +196,7 @@ const gameBoard = (function () {
             gameBoardBtns[8].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
             gameBoardMatrix[0][0] === "o" &&
@@ -202,6 +213,7 @@ const gameBoard = (function () {
             gameBoardBtns[6].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
             gameBoardMatrix[0][1] === "o" &&
@@ -218,6 +230,7 @@ const gameBoard = (function () {
             gameBoardBtns[7].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
             gameBoardMatrix[0][2] === "o" &&
@@ -234,6 +247,7 @@ const gameBoard = (function () {
             gameBoardBtns[8].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
             gameBoardMatrix[0][0] === "o" &&
@@ -250,6 +264,7 @@ const gameBoard = (function () {
             gameBoardBtns[8].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
             gameBoardMatrix[0][2] === "o" &&
@@ -266,6 +281,7 @@ const gameBoard = (function () {
             gameBoardBtns[6].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else {
             gameController.switchCurrentPlayer();
@@ -302,6 +318,14 @@ const gameController = (function () {
         return currentPlayer;
     };
 
+    const isFirstPlayerXMark = function () {
+        return player_1 === "x";
+    };
+
+    const isFirstPlayerOMark = function () {
+        return player_1 === "o";
+    };
+
     const switchCurrentPlayer = function () {
         if (getCurrentPlayer() === "x") {
             currentPlayer = "o";
@@ -335,6 +359,8 @@ const gameController = (function () {
     return {
         initializeGame,
         getCurrentPlayer,
+        isFirstPlayerXMark,
+        isFirstPlayerOMark,
         switchCurrentPlayer,
         pressedBoardButton,
         endGame,
@@ -375,7 +401,12 @@ const oMarkResultTitle = gameResultsRight.firstElementChild;
 const oMarkScore = gameResultsRight.lastElementChild;
 
 // ROUND WINNER WINDOW
-const player1WinWindow = document.querySelector(".p1-round-result-window");
+const overlay = document.querySelector(".overlay");
+const roundWinnerWindow = document.querySelector(".round-result-window");
+const winnerPlayerText = document.querySelector(".winner-player-text");
+const winnerMarkImg = document.querySelector(".winner-mark-img");
+const winnerMarkText = document.querySelector(".winner-mark-text");
+const nextRoundBtn = document.querySelector(".next-round-btn");
 
 // FUNCTIONS ----------------------------------------------------------
 function changeSelectedMark(btn) {
@@ -476,6 +507,39 @@ function disableBoardButtons() {
     gameBoardBtns.forEach(function (btn) {
         btn.disabled = true;
     });
+}
+
+function updateRoundWinnerWindow(winnerMark) {
+    if (winnerMark === "x") {
+        if (gameController.isFirstPlayerXMark()) {
+            winnerPlayerText.textContent = "player 1 wins!";
+        } else {
+            winnerPlayerText.textContent = "player 2 wins!";
+        }
+        console.log("hmm");
+
+        winnerMarkImg.src = "assets/images/svg/icon-x.svg";
+
+        winnerMarkText.classList.remove("yellow-font-color");
+        winnerMarkText.classList.add("cyan-font-color");
+    } else {
+        if (gameController.isFirstPlayerOMark()) {
+            winnerPlayerText.textContent = "player 1 wins!";
+        } else {
+            winnerPlayerText.textContent = "player 2 wins!";
+        }
+
+        winnerMarkImg.src = "assets/images/svg/icon-o.svg";
+
+        winnerMarkText.classList.remove("cyan-font-color");
+        winnerMarkText.classList.add("yellow-font-color");
+    }
+}
+
+function showRoundWinnerWindow() {
+    updateRoundWinnerWindow(gameController.getCurrentPlayer());
+    overlay.classList.toggle("hidden");
+    roundWinnerWindow.classList.toggle("hidden");
 }
 
 // ADDING EVENT LISTENERS ---------------------------------------------
