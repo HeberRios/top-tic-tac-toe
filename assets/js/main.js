@@ -291,10 +291,17 @@ const gameBoard = (function () {
 
     const fillMatrixCell = function (row, column, playerID) {
         gameBoardMatrix[row][column] = playerID;
-        console.log(gameBoardMatrix);
     };
 
-    return { checkBoardState, fillMatrixCell };
+    const resetMatrix = function () {
+        for (let i = 0; i < gameBoardMatrix.length; i++) {
+            for (let j = 0; j < gameBoardMatrix.length; j++) {
+                gameBoardMatrix[i][j] = "";
+            }
+        }
+    };
+
+    return { checkBoardState, fillMatrixCell, resetMatrix };
 })();
 
 const gameController = (function () {
@@ -358,6 +365,7 @@ const gameController = (function () {
 
     return {
         initializeGame,
+        setInitialPlayer,
         getCurrentPlayer,
         isFirstPlayerXMark,
         isFirstPlayerOMark,
@@ -490,7 +498,7 @@ function placeCurrentPlayerMark(btn) {
         btn.firstElementChild.src = "assets/images/svg/icon-x.svg";
         gameBoard.checkBoardState();
         changeHoverMarkImg();
-        btn.disabled = true;
+        btn.setAttribute("disabled", "");
         changeCurrentPlayerTurnImage();
     } else {
         gameController.pressedBoardButton(btn);
@@ -498,14 +506,14 @@ function placeCurrentPlayerMark(btn) {
         btn.firstElementChild.src = "assets/images/svg/icon-o.svg";
         gameBoard.checkBoardState();
         changeHoverMarkImg();
-        btn.disabled = true;
+        btn.setAttribute("disabled", "");
         changeCurrentPlayerTurnImage();
     }
 }
 
 function disableBoardButtons() {
     gameBoardBtns.forEach(function (btn) {
-        btn.disabled = true;
+        btn.setAttribute("disabled", "");
     });
 }
 
@@ -516,7 +524,6 @@ function updateRoundWinnerWindow(winnerMark) {
         } else {
             winnerPlayerText.textContent = "player 2 wins!";
         }
-        console.log("hmm");
 
         winnerMarkImg.src = "assets/images/svg/icon-x.svg";
 
@@ -538,8 +545,25 @@ function updateRoundWinnerWindow(winnerMark) {
 
 function showRoundWinnerWindow() {
     updateRoundWinnerWindow(gameController.getCurrentPlayer());
+    toggleRoundWinnerWindow();
+}
+
+function toggleRoundWinnerWindow() {
     overlay.classList.toggle("hidden");
     roundWinnerWindow.classList.toggle("hidden");
+}
+
+function resetBoardButtons() {
+    gameBoard.resetMatrix();
+
+    gameBoardBtns.forEach(function (btn) {
+        btn.removeAttribute("disabled");
+        btn.classList.remove("pressed", "x-winner", "o-winner");
+        gameController.setInitialPlayer(xPlayer.id);
+        changeHoverMarkImg();
+    });
+
+    toggleRoundWinnerWindow();
 }
 
 // ADDING EVENT LISTENERS ---------------------------------------------
@@ -559,3 +583,5 @@ gameBoardBtns.forEach(function (btn) {
         placeCurrentPlayerMark(btn);
     });
 });
+
+nextRoundBtn.addEventListener("click", resetBoardButtons);
