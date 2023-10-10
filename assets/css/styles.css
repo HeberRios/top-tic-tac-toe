@@ -367,14 +367,16 @@ img {
     border-radius: var(--base-border-radius);
 }
 
-.next-round-btn {
+.next-round-btn,
+.tie-next-round-btn {
     background-color: var(--yellow);
     border-bottom: 0.35rem solid var(--darker-yellow);
     border-radius: var(--base-border-radius);
 }
 
 .quit-btn,
-.next-round-btn {
+.next-round-btn,
+.tie-next-round-btn {
     padding: 1.6rem;
     font-size: 1.6rem;
     font-weight: 800;

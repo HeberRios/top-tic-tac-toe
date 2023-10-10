@@ -25,6 +25,7 @@ const gameBoard = (function () {
                 "assets/images/svg/icon-x-default.svg";
 
             gameController.endGame();
+            gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
@@ -43,6 +44,7 @@ const gameBoard = (function () {
                 "assets/images/svg/icon-x-default.svg";
 
             gameController.endGame();
+            gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
@@ -60,6 +62,7 @@ const gameBoard = (function () {
             gameBoardBtns[8].firstElementChild.src =
                 "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
+            gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
@@ -77,6 +80,7 @@ const gameBoard = (function () {
             gameBoardBtns[6].firstElementChild.src =
                 "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
+            gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
@@ -94,6 +98,7 @@ const gameBoard = (function () {
             gameBoardBtns[7].firstElementChild.src =
                 "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
+            gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
@@ -111,6 +116,7 @@ const gameBoard = (function () {
             gameBoardBtns[8].firstElementChild.src =
                 "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
+            gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
@@ -128,6 +134,7 @@ const gameBoard = (function () {
             gameBoardBtns[8].firstElementChild.src =
                 "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
+            gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
@@ -145,6 +152,7 @@ const gameBoard = (function () {
             gameBoardBtns[6].firstElementChild.src =
                 "assets/images/svg/icon-x-default.svg";
             gameController.endGame();
+            gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
@@ -162,6 +170,7 @@ const gameBoard = (function () {
             gameBoardBtns[2].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
@@ -179,6 +188,7 @@ const gameBoard = (function () {
             gameBoardBtns[5].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
@@ -196,6 +206,7 @@ const gameBoard = (function () {
             gameBoardBtns[8].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
@@ -213,6 +224,7 @@ const gameBoard = (function () {
             gameBoardBtns[6].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
@@ -230,6 +242,7 @@ const gameBoard = (function () {
             gameBoardBtns[7].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
@@ -247,6 +260,7 @@ const gameBoard = (function () {
             gameBoardBtns[8].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
@@ -264,6 +278,7 @@ const gameBoard = (function () {
             gameBoardBtns[8].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else if (
@@ -281,11 +296,17 @@ const gameBoard = (function () {
             gameBoardBtns[6].firstElementChild.src =
                 "assets/images/svg/icon-o-default.svg";
             gameController.endGame();
+            gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
         } else {
-            gameController.switchCurrentPlayer();
-            console.log("Not yet a winner");
+            gameController.turnCounterIncrement();
+            if (gameController.getTurnCounter() === 9) {
+                gameController.turnCounterReset();
+                setTimeout(toggleTiedRoundWindow, 1000);
+            } else {
+                gameController.switchCurrentPlayer();
+            }
         }
     };
 
@@ -308,6 +329,7 @@ const gameController = (function () {
     let gameState = true;
     let currentPlayer = "";
     let player_1, player_2;
+    let turnCounter = 0;
 
     const setPlayer_1Mark = function (player_1Mark) {
         player_1 = player_1Mark;
@@ -341,6 +363,18 @@ const gameController = (function () {
         }
     };
 
+    const getTurnCounter = function () {
+        return turnCounter;
+    };
+
+    const turnCounterIncrement = function () {
+        turnCounter++;
+    };
+
+    const turnCounterReset = function () {
+        turnCounter = 0;
+    };
+
     const initializeGame = function (player_1Mark, player_2Mark, xplayerID) {
         setPlayer_1Mark(player_1Mark);
         setPlayer_2Mark(player_2Mark);
@@ -370,6 +404,9 @@ const gameController = (function () {
         isFirstPlayerXMark,
         isFirstPlayerOMark,
         switchCurrentPlayer,
+        getTurnCounter,
+        turnCounterIncrement,
+        turnCounterReset,
         pressedBoardButton,
         endGame,
     };
@@ -415,6 +452,8 @@ const winnerPlayerText = document.querySelector(".winner-player-text");
 const winnerMarkImg = document.querySelector(".winner-mark-img");
 const winnerMarkText = document.querySelector(".winner-mark-text");
 const nextRoundBtn = document.querySelector(".next-round-btn");
+const tiedRoundWindow = document.querySelector(".tied-round-window");
+const tiedNextRoundBtn = document.querySelector(".tie-next-round-btn");
 
 // FUNCTIONS ----------------------------------------------------------
 function changeSelectedMark(btn) {
@@ -553,17 +592,37 @@ function toggleRoundWinnerWindow() {
     roundWinnerWindow.classList.toggle("hidden");
 }
 
-function resetBoardButtons() {
+function toggleTiedRoundWindow() {
+    overlay.classList.toggle("hidden");
+    tiedRoundWindow.classList.toggle("hidden");
+}
+
+function resetBoardButtonsWinner() {
     gameBoard.resetMatrix();
 
     gameBoardBtns.forEach(function (btn) {
         btn.removeAttribute("disabled");
         btn.classList.remove("pressed", "x-winner", "o-winner");
-        gameController.setInitialPlayer(xPlayer.id);
-        changeHoverMarkImg();
     });
 
+    gameController.setInitialPlayer(xPlayer.id);
+    changeHoverMarkImg();
+
     toggleRoundWinnerWindow();
+}
+
+function resetBoardButtonsTie() {
+    gameBoard.resetMatrix();
+
+    gameBoardBtns.forEach(function (btn) {
+        btn.removeAttribute("disabled");
+        btn.classList.remove("pressed", "x-winner", "o-winner");
+    });
+
+    gameController.setInitialPlayer(xPlayer.id);
+    changeHoverMarkImg();
+
+    toggleTiedRoundWindow();
 }
 
 // ADDING EVENT LISTENERS ---------------------------------------------
@@ -584,4 +643,5 @@ gameBoardBtns.forEach(function (btn) {
     });
 });
 
-nextRoundBtn.addEventListener("click", resetBoardButtons);
+nextRoundBtn.addEventListener("click", resetBoardButtonsWinner);
+tiedNextRoundBtn.addEventListener("click", resetBoardButtonsTie);
