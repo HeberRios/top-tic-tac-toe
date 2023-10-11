@@ -452,6 +452,12 @@ const gameController = (function () {
         return gameScores[2];
     };
 
+    const resetGameScores = function () {
+        gameScores[0] = 0;
+        gameScores[1] = 0;
+        gameScores[2] = 0;
+    };
+
     const endGame = function () {
         gameState = false;
     };
@@ -473,6 +479,7 @@ const gameController = (function () {
         getXScore,
         getTieScore,
         getOScore,
+        resetGameScores,
         endGame,
     };
 })();
@@ -509,6 +516,14 @@ const tiesScore = gameResultsMiddle.lastElementChild;
 const gameResultsRight = document.querySelector(".game-results-right");
 const oMarkResultTitle = gameResultsRight.firstElementChild;
 const oMarkScore = gameResultsRight.lastElementChild;
+const restartBtn = document.getElementById("restart-game-btn");
+const restartWindow = document.querySelector(".restart-round-window");
+const cancelRestartBtn = document.querySelector(
+    ".restart-round-window>div"
+).firstElementChild;
+const confirmRestartBtn = document.querySelector(
+    ".restart-round-window>div"
+).lastElementChild;
 
 // ROUND WINNER WINDOW
 const overlay = document.querySelector(".overlay");
@@ -662,6 +677,7 @@ function toggleTiedRoundWindow() {
     tiedRoundWindow.classList.toggle("hidden");
 }
 
+// GO TO THE NEXT ROUND IN A WINNER MODAL WINDOW (WHEN A PLAYER WINS A ROUND)
 function resetBoardButtonsWinner() {
     gameBoard.resetMatrix();
 
@@ -676,6 +692,7 @@ function resetBoardButtonsWinner() {
     toggleRoundWinnerWindow();
 }
 
+// GO TO THE NEXT ROUND IN A TIE MODAL WINDOW (WHEN THE ROUND ENDS WITH A TIE)
 function resetBoardButtonsTie() {
     gameBoard.resetMatrix();
 
@@ -696,23 +713,67 @@ function updateGameScores() {
     oMarkScore.textContent = gameController.getOScore();
 }
 
+function resetGameScores() {
+    gameController.resetGameScores();
+
+    xMarkScore.textContent = gameController.getXScore();
+    tiesScore.textContent = gameController.getTieScore();
+    oMarkScore.textContent = gameController.getOScore();
+}
+
+function toggleRestartWindow() {
+    overlay.classList.toggle("hidden");
+    restartWindow.classList.toggle("hidden");
+}
+
+function restartGame() {
+    gameBoard.resetMatrix();
+    resetGameScores();
+
+    gameBoardBtns.forEach(function (btn) {
+        btn.removeAttribute("disabled");
+        btn.classList.remove("pressed", "x-winner", "o-winner");
+    });
+
+    gameController.setInitialPlayer(xPlayer.id);
+    changeHoverMarkImg();
+    toggleRestartWindow();
+}
+
 // ADDING EVENT LISTENERS ---------------------------------------------
 
+// CHANGE TO MAIN GAME WINDOW AFTER SELECTING THE P1 MARK
 newGameVsPlayerBtn.addEventListener("click", function () {
     changeToGameBoardWindow();
 });
 
+// SELECT THE MARK FOR THE P1 MARK
 markSelectBtns.forEach(function (btn) {
     btn.addEventListener("click", function () {
         changeSelectedMark(btn);
     });
 });
 
+// A GAME BOARD BUTTON IS PRESSED
 gameBoardBtns.forEach(function (btn) {
     btn.addEventListener("click", function () {
         placeCurrentPlayerMark(btn);
     });
 });
 
+// NEXT ROUND BUTTON IN A ROUND WITH A WINNER
 nextRoundBtn.addEventListener("click", resetBoardButtonsWinner);
+
+// NEXT ROUND BUTTON IN A TIED ROUND
 tiedNextRoundBtn.addEventListener("click", resetBoardButtonsTie);
+
+// RELATED TO THE RESTART BUTTON
+
+// THE RESTART BUTTON IS PRESSED
+restartBtn.addEventListener("click", toggleRestartWindow);
+
+// THE RESTART IS CANCELED
+cancelRestartBtn.addEventListener("click", toggleRestartWindow);
+
+// THE RESTART IS CONFIRMED
+confirmRestartBtn.addEventListener("click", restartGame);
