@@ -28,6 +28,8 @@ const gameBoard = (function () {
             gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
+            gameController.addPointToX();
+            updateGameScores();
         } else if (
             gameBoardMatrix[1][0] === "x" &&
             gameBoardMatrix[1][1] === "x" &&
@@ -47,6 +49,8 @@ const gameBoard = (function () {
             gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
+            gameController.addPointToX();
+            updateGameScores();
         } else if (
             gameBoardMatrix[2][0] === "x" &&
             gameBoardMatrix[2][1] === "x" &&
@@ -65,6 +69,8 @@ const gameBoard = (function () {
             gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
+            gameController.addPointToX();
+            updateGameScores();
         } else if (
             gameBoardMatrix[0][0] === "x" &&
             gameBoardMatrix[1][0] === "x" &&
@@ -83,6 +89,8 @@ const gameBoard = (function () {
             gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
+            gameController.addPointToX();
+            updateGameScores();
         } else if (
             gameBoardMatrix[0][1] === "x" &&
             gameBoardMatrix[1][1] === "x" &&
@@ -101,6 +109,8 @@ const gameBoard = (function () {
             gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
+            gameController.addPointToX();
+            updateGameScores();
         } else if (
             gameBoardMatrix[0][2] === "x" &&
             gameBoardMatrix[1][2] === "x" &&
@@ -119,6 +129,8 @@ const gameBoard = (function () {
             gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
+            gameController.addPointToX();
+            updateGameScores();
         } else if (
             gameBoardMatrix[0][0] === "x" &&
             gameBoardMatrix[1][1] === "x" &&
@@ -137,6 +149,8 @@ const gameBoard = (function () {
             gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
+            gameController.addPointToX();
+            updateGameScores();
         } else if (
             gameBoardMatrix[0][2] === "x" &&
             gameBoardMatrix[1][1] === "x" &&
@@ -155,6 +169,8 @@ const gameBoard = (function () {
             gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
+            gameController.addPointToX();
+            updateGameScores();
         } else if (
             gameBoardMatrix[0][0] === "o" &&
             gameBoardMatrix[0][1] === "o" &&
@@ -173,6 +189,8 @@ const gameBoard = (function () {
             gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
+            gameController.addPointToO();
+            updateGameScores();
         } else if (
             gameBoardMatrix[1][0] === "o" &&
             gameBoardMatrix[1][1] === "o" &&
@@ -191,6 +209,8 @@ const gameBoard = (function () {
             gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
+            gameController.addPointToO();
+            updateGameScores();
         } else if (
             gameBoardMatrix[2][0] === "o" &&
             gameBoardMatrix[2][1] === "o" &&
@@ -209,6 +229,8 @@ const gameBoard = (function () {
             gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
+            gameController.addPointToO();
+            updateGameScores();
         } else if (
             gameBoardMatrix[0][0] === "o" &&
             gameBoardMatrix[1][0] === "o" &&
@@ -227,6 +249,8 @@ const gameBoard = (function () {
             gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
+            gameController.addPointToO();
+            updateGameScores();
         } else if (
             gameBoardMatrix[0][1] === "o" &&
             gameBoardMatrix[1][1] === "o" &&
@@ -245,6 +269,8 @@ const gameBoard = (function () {
             gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
+            gameController.addPointToO();
+            updateGameScores();
         } else if (
             gameBoardMatrix[0][2] === "o" &&
             gameBoardMatrix[1][2] === "o" &&
@@ -263,6 +289,8 @@ const gameBoard = (function () {
             gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
+            gameController.addPointToO();
+            updateGameScores();
         } else if (
             gameBoardMatrix[0][0] === "o" &&
             gameBoardMatrix[1][1] === "o" &&
@@ -281,6 +309,8 @@ const gameBoard = (function () {
             gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
+            gameController.addPointToO();
+            updateGameScores();
         } else if (
             gameBoardMatrix[0][2] === "o" &&
             gameBoardMatrix[1][1] === "o" &&
@@ -299,10 +329,14 @@ const gameBoard = (function () {
             gameController.turnCounterReset();
             setTimeout(showRoundWinnerWindow, 1000);
             disableBoardButtons();
+            gameController.addPointToO();
+            updateGameScores();
         } else {
             gameController.turnCounterIncrement();
             if (gameController.getTurnCounter() === 9) {
                 gameController.turnCounterReset();
+                gameController.addPointToTie();
+                updateGameScores();
                 setTimeout(toggleTiedRoundWindow, 1000);
             } else {
                 gameController.switchCurrentPlayer();
@@ -330,6 +364,7 @@ const gameController = (function () {
     let currentPlayer = "";
     let player_1, player_2;
     let turnCounter = 0;
+    const gameScores = [0, 0, 0];
 
     const setPlayer_1Mark = function (player_1Mark) {
         player_1 = player_1Mark;
@@ -393,6 +428,30 @@ const gameController = (function () {
         }
     };
 
+    const addPointToX = function () {
+        gameScores[0] += 1;
+    };
+
+    const addPointToTie = function () {
+        gameScores[1] += 1;
+    };
+
+    const addPointToO = function () {
+        gameScores[2] += 1;
+    };
+
+    const getXScore = function () {
+        return gameScores[0];
+    };
+
+    const getTieScore = function () {
+        return gameScores[1];
+    };
+
+    const getOScore = function () {
+        return gameScores[2];
+    };
+
     const endGame = function () {
         gameState = false;
     };
@@ -408,6 +467,12 @@ const gameController = (function () {
         turnCounterIncrement,
         turnCounterReset,
         pressedBoardButton,
+        addPointToX,
+        addPointToTie,
+        addPointToO,
+        getXScore,
+        getTieScore,
+        getOScore,
         endGame,
     };
 })();
@@ -623,6 +688,12 @@ function resetBoardButtonsTie() {
     changeHoverMarkImg();
 
     toggleTiedRoundWindow();
+}
+
+function updateGameScores() {
+    xMarkScore.textContent = gameController.getXScore();
+    tiesScore.textContent = gameController.getTieScore();
+    oMarkScore.textContent = gameController.getOScore();
 }
 
 // ADDING EVENT LISTENERS ---------------------------------------------
