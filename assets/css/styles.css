@@ -317,7 +317,8 @@ img {
 .cpu-win-round-result-window,
 .cpu-loss-round-result-window,
 .tied-round-window,
-.restart-round-window {
+.restart-round-window,
+.quit-game-window {
     width: 100%;
     position: absolute;
     top: 50%;

@@ -517,12 +517,23 @@ const gameResultsRight = document.querySelector(".game-results-right");
 const oMarkResultTitle = gameResultsRight.firstElementChild;
 const oMarkScore = gameResultsRight.lastElementChild;
 const restartBtn = document.getElementById("restart-game-btn");
+
+// RESTART ROUND WINDOW
 const restartWindow = document.querySelector(".restart-round-window");
 const cancelRestartBtn = document.querySelector(
     ".restart-round-window>div"
 ).firstElementChild;
 const confirmRestartBtn = document.querySelector(
     ".restart-round-window>div"
+).lastElementChild;
+
+// QUIT GAME WINDOW
+const quitGameWindow = document.querySelector(".quit-game-window");
+const cancelGameQuit = document.querySelector(
+    ".quit-game-window>div"
+).firstElementChild;
+const confirmGameQuit = document.querySelector(
+    ".quit-game-window>div"
 ).lastElementChild;
 
 // ROUND WINNER WINDOW
@@ -532,8 +543,15 @@ const winnerPlayerText = document.querySelector(".winner-player-text");
 const winnerMarkImg = document.querySelector(".winner-mark-img");
 const winnerMarkText = document.querySelector(".winner-mark-text");
 const nextRoundBtn = document.querySelector(".next-round-btn");
+const winnerQuitGameBtn = document.querySelector(".round-result-window")
+    .lastElementChild.firstElementChild;
+
+// TIED ROUND WINDOW
 const tiedRoundWindow = document.querySelector(".tied-round-window");
 const tiedNextRoundBtn = document.querySelector(".tie-next-round-btn");
+const tiedRoundQuitBtn = document.querySelector(
+    ".tied-round-window>div"
+).firstElementChild;
 
 // FUNCTIONS ----------------------------------------------------------
 function changeSelectedMark(btn) {
@@ -571,6 +589,8 @@ function setInitialResultsText() {
         gameController.initializeGame(oPlayer.id, xPlayer.id, xPlayer.id);
     } else {
         gameController.initializeGame(xPlayer.id, oPlayer.id, xPlayer.id);
+        xMarkResultTitle.textContent = "x (p1)";
+        oMarkResultTitle.textContent = "o (p2)";
     }
 }
 
@@ -740,6 +760,50 @@ function restartGame() {
     toggleRestartWindow();
 }
 
+function toggleQuitWindow() {
+    quitGameWindow.classList.toggle("hidden");
+}
+
+function toggleConfirmGameQuitFromWinnerWindow() {
+    roundWinnerWindow.classList.add("hidden");
+    toggleQuitWindow();
+}
+
+function toggleConfirmGameQuitFromTieWindow() {
+    tiedRoundWindow.classList.add("hidden");
+    toggleQuitWindow();
+}
+
+function continueToNextRound() {
+    gameBoard.resetMatrix();
+
+    gameBoardBtns.forEach(function (btn) {
+        btn.removeAttribute("disabled");
+        btn.classList.remove("pressed", "x-winner", "o-winner");
+    });
+
+    gameController.setInitialPlayer(xPlayer.id);
+    changeHoverMarkImg();
+    toggleQuitWindow();
+    overlay.classList.toggle("hidden");
+}
+
+function quitGame() {
+    gameBoard.resetMatrix();
+
+    gameBoardBtns.forEach(function (btn) {
+        btn.removeAttribute("disabled");
+        btn.classList.remove("pressed", "x-winner", "o-winner");
+    });
+
+    gameController.setInitialPlayer(xPlayer.id);
+    changeHoverMarkImg();
+    toggleQuitWindow();
+    overlay.classList.toggle("hidden");
+    mainGameWindow.classList.toggle("hidden");
+    newGameMenu.classList.toggle("hidden");
+}
+
 // ADDING EVENT LISTENERS ---------------------------------------------
 
 // CHANGE TO MAIN GAME WINDOW AFTER SELECTING THE P1 MARK
@@ -777,3 +841,18 @@ cancelRestartBtn.addEventListener("click", toggleRestartWindow);
 
 // THE RESTART IS CONFIRMED
 confirmRestartBtn.addEventListener("click", restartGame);
+
+// QUIT GAME CONFIRMATION FROM A TIED ROUND WINDOW
+tiedRoundQuitBtn.addEventListener("click", toggleConfirmGameQuitFromTieWindow);
+
+// QUIT GAME CONFIRMATION FROM A ROUND WITH A WINNER
+winnerQuitGameBtn.addEventListener(
+    "click",
+    toggleConfirmGameQuitFromWinnerWindow
+);
+
+// CANCEL GAME QUIT (CONTINUE TO NEXT ROUND)
+cancelGameQuit.addEventListener("click", continueToNextRound);
+
+// CONFIRM GAME EXIT
+confirmGameQuit.addEventListener("click", quitGame);
